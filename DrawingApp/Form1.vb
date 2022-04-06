@@ -3,6 +3,7 @@
     Dim m_shapes As New Collection
     Dim c As Color
     Dim w As Integer
+    Dim type As String
 
 
     Private Sub pictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
@@ -12,12 +13,49 @@
 
     Private Sub pictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
         If m_Previous IsNot Nothing Then
-            Dim l As New Line(PictureBox1.Image, m_Previous, e.Location)
-            l.Pen = New Pen(c, w)
-            m_shapes.Add(l)
+            Dim d As Object
+
+            d = New Line(PictureBox1.Image, m_Previous, e.Location)
+            d.Pen = New Pen(c, w)
+
+
+
+            If type = "Line" Then
+                d = New Line(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+                d.xspeed = xSpeedTrackBar.Value
+                d.yspeed = ySpeedTrackBar.Value
+            End If
+
+            If type = "Ngon" Then
+                d = New Ngon(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+                d.Radius = TrackBar3.Value
+                d.Sides = TrackBar4.Value
+                d.xspeed = xSpeedTrackBar.Value
+                d.ySpeed = ySpeedTrackBar.Value
+            End If
+            If type = "Picture" Then
+                d = New PBox(PictureBox1.Image, m_Previous, e.Location)
+                d.w = TrackBar1.Value
+                d.h = TrackBar1.Value
+                d.Picture = PictureBox2.Image
+                d.xspeed = xSpeedTrackBar.Value
+                d.yspeed = ySpeedTrackBar.Value
+            End If
+            If type = "Rectangle" Then
+                d = New Rect(PictureBox1.Image, m_Previous, e.Location)
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
+
+                d.Pen = New Pen(c, w)
+            End If
+            m_shapes.Add(d)
             PictureBox1.Invalidate()
             m_Previous = e.Location
         End If
+
     End Sub
 
     Private Sub pictureBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseUp
@@ -34,9 +72,13 @@
     End Sub
 
     Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
-        For Each s As Line In m_shapes
+        For Each s As Object In m_shapes
             s.Draw()
         Next
+        If (CheckBox1.Checked) Then
+            Refresh()
+        End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -47,11 +89,16 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        c = sender.backcolor
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        sender.BackColor = c
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        c = sender.backcolor
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        sender.BackColor = c
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -86,5 +133,21 @@
         SaveFileDialog1.ShowDialog()
         PictureBox1.Image.Save(SaveFileDialog1.FileName)
 
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        Type = "Line"
+    End Sub
+
+    Private Sub NGon_Click(sender As Object, e As EventArgs) Handles NGon.Click
+        type = "Ngon"
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        type = "Picture"
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        type = "Rectangle"
     End Sub
 End Class
