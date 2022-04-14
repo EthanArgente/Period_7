@@ -145,6 +145,30 @@
   <ItemGroup>
     <None Include="Resources\Circle1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Triange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lie.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ngon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ice cream.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

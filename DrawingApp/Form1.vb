@@ -32,6 +32,11 @@
                 d.Pen = New Pen(c, w)
                 d.W = TrackBar1.Value
                 d.H = TrackBar2.Value
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
+                d.xspeed = xSpeedTrackBar.Value
+                d.yspeed = ySpeedTrackBar.Value
             End If
 
             If type = "Ngon" Then
@@ -39,8 +44,11 @@
                 d.Pen = New Pen(c, w)
                 d.Radius = TrackBar3.Value
                 d.Sides = TrackBar4.Value
-                'd.xspeed = xSpeedTrackBar.Value
-                'd.ySpeed = ySpeedTrackBar.Value
+                d.xspeed = xSpeedTrackBar.Value
+                d.ySpeed = ySpeedTrackBar.Value
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
             End If
 
             If type = "Picture" Then
@@ -57,7 +65,8 @@
                 d.fill = CheckBox2.Checked
                 d.color1 = Button2.BackColor
                 d.color2 = Button3.BackColor
-
+                d.xspeed = xSpeedTrackBar.Value
+                d.yspeed = ySpeedTrackBar.Value
                 d.Pen = New Pen(c, w)
             End If
 
@@ -66,6 +75,11 @@
                 d.Pen = New Pen(c, w)
                 d.W = TrackBar1.Value
                 d.H = TrackBar2.Value
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
+                d.xspeed = xSpeedTrackBar.Value
+                d.yspeed = ySpeedTrackBar.Value
             End If
 
             If type = "Polygon" Then
@@ -92,6 +106,9 @@
                 d.Pen = New Pen(c, w)
                 d.W = TrackBar1.Value
                 d.H = TrackBar2.Value
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
             End If
 
             m_shapes.Add(d)
@@ -166,6 +183,7 @@
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+
         Dim bmp As New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Using g As Graphics = Graphics.FromImage(bmp)
             g.Clear(Color.White)
@@ -213,5 +231,9 @@
 
     Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
         type = "IceCream"
+    End Sub
+
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+
     End Sub
 End Class
