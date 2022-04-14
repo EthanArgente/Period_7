@@ -27,14 +27,22 @@
                 d.yspeed = ySpeedTrackBar.Value
             End If
 
+            If type = "Circle" Then
+                d = New Circle(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+                d.W = TrackBar1.Value
+                d.H = TrackBar2.Value
+            End If
+
             If type = "Ngon" Then
                 d = New Ngon(PictureBox1.Image, m_Previous, e.Location)
                 d.Pen = New Pen(c, w)
                 d.Radius = TrackBar3.Value
                 d.Sides = TrackBar4.Value
-                d.xspeed = xSpeedTrackBar.Value
-                d.ySpeed = ySpeedTrackBar.Value
+                'd.xspeed = xSpeedTrackBar.Value
+                'd.ySpeed = ySpeedTrackBar.Value
             End If
+
             If type = "Picture" Then
                 d = New PBox(PictureBox1.Image, m_Previous, e.Location)
                 d.w = TrackBar1.Value
@@ -43,6 +51,7 @@
                 d.xspeed = xSpeedTrackBar.Value
                 d.yspeed = ySpeedTrackBar.Value
             End If
+
             If type = "Rectangle" Then
                 d = New Rect(PictureBox1.Image, m_Previous, e.Location)
                 d.fill = CheckBox2.Checked
@@ -51,9 +60,44 @@
 
                 d.Pen = New Pen(c, w)
             End If
+
+            If type = "Square" Then
+                d = New Square(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+                d.W = TrackBar1.Value
+                d.H = TrackBar2.Value
+            End If
+
+            If type = "Polygon" Then
+                d = New Polygon(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
+            End If
+
+            If type = "Arc" Then
+                d = New Arc(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
+            End If
+
+            If type = "IceCream" Then
+
+                d = New Custom(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+                d.W = TrackBar1.Value
+                d.H = TrackBar2.Value
+            End If
+
             m_shapes.Add(d)
-            PictureBox1.Invalidate()
+                PictureBox1.Invalidate()
             m_Previous = e.Location
+
         End If
 
     End Sub
@@ -149,5 +193,25 @@
 
     Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
         type = "Rectangle"
+    End Sub
+
+    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+        type = "Circle"
+    End Sub
+
+    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
+        type = "Square"
+    End Sub
+
+    Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
+        type = "Polygon"
+    End Sub
+
+    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
+        type = "Arc"
+    End Sub
+
+    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
+        type = "IceCream"
     End Sub
 End Class

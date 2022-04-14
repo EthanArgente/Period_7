@@ -26,6 +26,8 @@
 
                 g.FillRectangle(lingrBrush, m_a.X, m_a.Y, 100, 100)
             Else
+
+
                 g.DrawRectangle(Pen, m_a.X, m_a.Y, 100, 100)
 
             End If

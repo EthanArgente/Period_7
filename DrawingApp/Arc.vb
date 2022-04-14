@@ -1,12 +1,9 @@
-﻿Public Class Polygon
+﻿Public Class Arc
+
     Public Property Pen As Pen
     Public Property fill As Boolean
     Public Property color1 As Color
     Public Property color2 As Color
-
-
-
-
     Dim m_image As Image
     Dim m_a As Point
     Dim m_b As Point
@@ -19,10 +16,6 @@
     End Sub
     Public Sub Draw()
         Using g As Graphics = Graphics.FromImage(m_image)
-            Dim points(2) As Point
-            points(0) = New Point(m_a.X, m_a.Y)
-            points(1) = New Point(m_a.X, m_a.Y + 50)
-            points(2) = New Point(m_a.X + 50, m_a.Y)
             If fill Then
                 Dim lingrBrush As Drawing.Drawing2D.LinearGradientBrush
                 lingrBrush = New Drawing.Drawing2D.LinearGradientBrush(
@@ -31,13 +24,16 @@
                                 color1,
                                 color2)
 
-                g.FillPolygon(lingrBrush, points)
+                g.FillPie(lingrBrush, m_a.X, m_a.Y, 100, 100, 0, 90)
             Else
 
-                g.DrawPolygon(Pen, points)
+
+                g.DrawArc(Pen, m_a.X, m_a.Y, 100, 100, 0, 90)
+
             End If
         End Using
 
     End Sub
 
 End Class
+
